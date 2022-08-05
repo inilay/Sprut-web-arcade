@@ -1,0 +1,65 @@
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+
+  <body>
+    <div class="w3-display-right har">
+      <div id="health"></div>
+      <div id="damage"></div>
+      <div id="speed"></div>
+      <div id="score"></div>
+    </div>
+
+    <div id="menu" class="menu_style">
+      <div class="display_table">
+        <div class="table_style">
+          <h3>Результаты</h3>
+          <table id="Result_table" class="table_all">
+            <tr>
+              <td>
+                <h4>Игра №</h4>
+              </td>
+              <td>
+                <h4>Уровень</h4>
+              </td>
+              <td>
+                <h4>Очки</h4>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <button  onClick="level_caller(1, 'youcanbemylasttwo.json')">Уровень 1</button>
+        <button  onClick="level_caller(2, 'youcanbemylastone.json')">Уровень 2</button>
+      </div>
+    </div>
+
+    <div class="canvas_style">
+      <canvas id="canvas" width="720" height="540"></canvas>
+    </div>
+
+    <script src="mapManager.js"></script>
+    <script src="gameManager.js"></script>
+    <script src="physicManager.js"></script>
+    <script src="soundManager.js"></script>
+    <script src="eventsManager.js"></script>
+    <script src="spriteManager.js"></script>
+    <script src="Entity.js"></script>
+    <script src="characteristicManager.js"></script>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      soundManager.init();
+      soundManager.loadArray(["main.mp3"]);
+      soundManager.play("main.mp3", { looping: true });
+      // загружаем карту
+      gameManager.loadAll(ctx, "youcanbemylasttwo.json");
+      // запускаем игру
+      gameManager.play(ctx);
+    </script>
+
+  </body>
+</html>
